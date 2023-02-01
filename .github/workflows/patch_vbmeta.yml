@@ -39,15 +39,15 @@ jobs:
     - name: Upload to Release
       uses: ncipollo/release-action@v1.11.1
       with:
-        artifacts: vbmeta*.img
+        artifacts: vbmeta.img
         Name: Patched VBMeta
         draft: false
         prerelease: true
         tag: ${{ github.run_id }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-          * Your vbmeta image are now ready!
-          * Flash it now.
+          Your vbmeta image are now ready!
+          Flash it now.
 
     - name: Link to Release
       run: |
