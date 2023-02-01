@@ -29,7 +29,7 @@ jobs:
         
     - name: Patch File Information
       run: |
-        file vbmeta-disable-verification
+        file ${{ github.event.inputs.ARCHITECTURE }}/vbmeta-disable-verification
         
     - name: Give Permissiond Run Patch
       run: |
@@ -39,14 +39,15 @@ jobs:
     - name: Upload to Release
       uses: ncipollo/release-action@v1.11.1
       with:
-        artifacts: vbmeta.img
+        artifacts: vbmeta*.img
         Name: Patched VBMeta
         draft: false
         prerelease: true
         tag: ${{ github.run_id }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-          Your `vbmeta image` are now patched with disabled verity and verification. Flash it via your custom recovery or via fastboot.
+          * Your vbmeta image are now ready!
+          * Flash it now.
 
     - name: Link to Release
       run: |
