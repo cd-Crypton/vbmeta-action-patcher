@@ -1,5 +1,5 @@
 ## Patch your VBMeta Image
-This github action will let you patch your vbmeta. Prebuilt files for patching aren't mine, all the credits should be given to him; [lbxzr](https://github.com/libxzr) and his repository about [vbmeta-disable-verification](https://github.com/libxzr/vbmeta-disable-verification).
+This github action will let you patch your vbmeta. Prebuilt files for patching aren't mine, all the credits should be given to him; [lbxzr](https://github.com/libxzr)'s [vbmeta-disable-verification](https://github.com/libxzr/vbmeta-disable-verification).
 
 ## Guide
 * Fork this repository.
