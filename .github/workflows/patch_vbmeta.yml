@@ -37,9 +37,9 @@ jobs:
         ./${{ github.event.inputs.ARCHITECTURE }}/vbmeta-disable-verification vbmeta.img
 
     - name: Upload to Release
-      uses: ncipollo/release-action@v1.11.1
+      uses: ncipollo/release-action@v1.12.0
       with:
-        artifacts: vbmeta.img
+        artifacts: ${GITHUB_WORKSPACE}/vbmeta.img
         Name: Patched VBMeta
         draft: false
         prerelease: true
