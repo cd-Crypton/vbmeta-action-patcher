@@ -42,7 +42,7 @@ jobs:
     - name: Upload to Release
       uses: ncipollo/release-action@v1.12.0
       with:
-        artifacts: ${GITHUB_WORKSPACE}/vbmeta.img
+        artifacts: vbmeta.img
         Name: Patched VBMeta
         draft: false
         prerelease: true
