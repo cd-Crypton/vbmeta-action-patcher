@@ -1,0 +1,53 @@
+name: Patch VBMeta
+
+on:
+  workflow_dispatch:
+    inputs:
+      ARCHITECTURE:
+        description: 'Architecture'
+        required: true
+        default: 'x86_64'
+        type: choice
+        options:
+        - x86_64
+        - x86
+        - arm64-v8a
+        - armaebi-v7a
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-latest
+    steps:
+ 
+    - name: Check Out
+      uses: actions/checkout@v3.1.0
+      
+    - name: Operating System Information
+      run: |
+        uname -a
+        
+    - name: Patch File Information
+      run: |
+        file vbmeta-disable-verification
+        
+    - name: Give Permissiond Run Patch
+      run: |
+        chmod +x vbmeta-disable-verification
+        ./vbmeta-disable-verification vbmeta.img
+
+    - name: Upload to Release
+      uses: ncipollo/release-action@v1.11.1
+      with:
+        artifacts: vbmeta.img
+        Name: Patched VBMeta
+        draft: false
+        prerelease: true
+        tag: ${{ github.run_id }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        body: |
+          Your `vbmeta image` are now patched with disabled verity and verification. Flash it via your custom recovery or via fastboot.
+
+    - name: Link to Release
+      run: |
+        echo "https://github.com/${GITHUB_REPOSITORY}/releases/tag/${{ github.run_id }}"
