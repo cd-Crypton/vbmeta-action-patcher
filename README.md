@@ -8,4 +8,7 @@ This github action will let you patch your vbmeta. Prebuilt files for patching a
 * Go to `Release` section of the repository, download the new vbmeta image, and flash it.
 
 ## Notes
-* The patched vbmeta image should be equal to this command: `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`.
+* It is equivalent to: `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`.
+* If patching failed, maybe you are patching using wrong architecture;
+  * Check Operating System Information in the workflow results.
+  * If your Operating System Information tells you x86_64, then you need to use x86_64 as architecture.
