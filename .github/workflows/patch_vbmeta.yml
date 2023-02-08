@@ -34,7 +34,7 @@ jobs:
       run: |
         file ${{ github.event.inputs.ARCHITECTURE }}/vbmeta-disable-verification
         
-    - name: Give Permissiond Run Patch
+    - name: Give Permissio and Run Patch
       run: |
         chmod +x ${{ github.event.inputs.ARCHITECTURE }}/vbmeta-disable-verification
         ./${{ github.event.inputs.ARCHITECTURE }}/vbmeta-disable-verification vbmeta.img
